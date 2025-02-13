@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char *input = NULL;
+    size_t size = 0;
+    int letter_count = 0;
+    int digit_count = 0;
+    char letters[256] = "";
+    char digits[256] = "";
+    int letter_index = 0, digit_index = 0;
+
+    printf("Enter a string: ");
+    getline(&input, &size, stdin);
+
+    size_t len = strlen(input);
+    if (len > 0 && input[len - 1] == '\n') {
+        input[len - 1] = '\0';
+    }
+
+    printf("\nThe input string is:\n%s\n\n", input);
+
+    for (int i = 0; input[i] != '\0'; i++) {
+        if (isalpha(input[i])) {
+            letters[letter_index++] = input[i];
+            letter_count++;
+        }
+        if (isdigit(input[i])) {
+            digits[digit_index++] = input[i];
+            digit_count++;
+        }
+    }
+    letters[letter_index] = '\0';
+    digits[digit_index] = '\0';
+
+    printf("Number of alphabetic letters: %d\n", letter_count);
+    printf("The letters are: %s\n\n", letters);
+    printf("Number of digits: %d\n", digit_count);
+    printf("The numbers are: %s\n\n", digits);
+    
+    free(input);
+    return 0;
+}
