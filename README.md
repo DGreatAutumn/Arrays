@@ -1,1 +1,1 @@
-# Arrays
+Educational purposes
